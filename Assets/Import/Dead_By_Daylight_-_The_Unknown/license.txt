@@ -1,0 +1,8 @@
+Model Information:
+* title:	Dead By Daylight - The Unknown
+* source:	https://sketchfab.com/3d-models/dead-by-daylight-the-unknown-a2a769938f534a29af0f9184e3ae47af
+* author:	MG Rips (https://sketchfab.com/MG_GameRips)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
