@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -22,9 +23,9 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     public PlayerInput playerinput;
     
-   
+    private Vector3 currentPosition;
 
-
+    public GameObject otherSide;
 
     
     private void Awake()
@@ -55,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
         cc.Move(velocity * Time.deltaTime);
 
-
+        currentPosition = transform.position;
     }
 
 
@@ -81,7 +82,19 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-   
+   public void Vaulting() 
+   {
+        Debug.Log("E Pressed");
+        
+        
+        transform.position = otherSide.gameObject.transform.position;
+
+    
+    
+   }
+        
+
+        
    
 
    
