@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -19,14 +17,20 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
 
     private Vector3 movement;
-    private CharacterController cc;
+    public CharacterController cc;
     private Animator animator;
     public PlayerInput playerinput;
     
     private Vector3 currentPosition;
 
-    public GameObject otherSide;
 
+    public Transform target;
+    Vector3 moveDirection;
+
+    public GameObject otherSide;
+    public bool isVaulting;
+
+    public Vaulting vaulting;
     
     private void Awake()
     {
@@ -56,11 +60,52 @@ public class PlayerMovement : MonoBehaviour
 
         cc.Move(velocity * Time.deltaTime);
 
+
+
+
+        #region Vaulting
         currentPosition = transform.position;
+
+
+        if (otherSide != null) 
+        { 
+          target = otherSide.transform;
+        
+        }
+        else 
+        {
+            Debug.Log("Target Not Found");
+            target = null;
+        }
+     
+     
+
+        if (isVaulting == true)
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+            moveDirection = direction;
+           
+        }
+
+       
+
+        #endregion
+    }
+    private void FixedUpdate()
+    {
+        //set to chase the player
+        if (isVaulting)
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+            moveDirection = direction;
+
+            
+            cc.Move(moveDirection * speed);
+
+        }
     }
 
-
-    // players movement and animations
+    #region  Movement Animations
     private void OnMovement(InputValue value)
     {
         movement = value.Get<Vector3>();
@@ -81,21 +126,29 @@ public class PlayerMovement : MonoBehaviour
 
 
     }
+    #endregion
+    public IEnumerator StartVaulting() 
+    {
+        isVaulting = true;
 
-   public void Vaulting() 
-   {
         Debug.Log("E Pressed");
-        
-        
-        transform.position = otherSide.gameObject.transform.position;
 
-    
-    
-   }
-        
+       
+       
+        yield return new WaitWhile(() => vaulting.doneVault == false);
 
-        
-   
+        isVaulting = false;
+
+    }
+
 
    
+
 }
+        
+
+        
+   
+
+   
+
