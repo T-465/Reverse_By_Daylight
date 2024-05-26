@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     {
         
         cc = GetComponent<CharacterController>();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         
     }
     private void Update()
@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
         cc.Move(velocity * Time.deltaTime);
 
-
+        
 
 
         #region Vaulting
@@ -115,12 +115,12 @@ public class PlayerMovement : MonoBehaviour
             //animator.SetFloat("X", movement.x);
             //animator.SetFloat("Y", movement.y);
 
-            //animator.SetBool("IsWalking", true);
+            animator.SetBool("IsWalking", true);
 
         }
         else
         {
-            //animator.SetBool("IsWalking", false);
+            animator.SetBool("IsWalking", false);
 
         }
 
