@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -190,9 +190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6495aa22168db194da7f54fae8668c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 0}
+  playerMovement: {fileID: 1755733464}
   otherSide: {fileID: 1850839152}
   doneVault: 0
+  vaultWall: {fileID: 2127090690}
 --- !u!1 &75843345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,9 +1071,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6495aa22168db194da7f54fae8668c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 0}
+  playerMovement: {fileID: 1755733464}
   otherSide: {fileID: 163523554}
   doneVault: 0
+  vaultWall: {fileID: 2127090690}
 --- !u!1 &1322687527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,7 +1149,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 71041beb23173c24e8c2dd0271a50de0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.553
+      value: 4.252
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71041beb23173c24e8c2dd0271a50de0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1155,7 +1157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71041beb23173c24e8c2dd0271a50de0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.512
+      value: -6.12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 71041beb23173c24e8c2dd0271a50de0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1251,7 +1253,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.73
-  m_Radius: 0.47
+  m_Radius: 0.29
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -1306,7 +1308,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  cc: {fileID: 0}
+  cc: {fileID: 1755733462}
   playerinput: {fileID: 1755733463}
   target: {fileID: 0}
   otherSide: {fileID: 0}

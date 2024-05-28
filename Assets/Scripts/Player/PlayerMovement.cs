@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Vaulting vaulting;
     
+    
     private void Awake()
     {
         
@@ -87,6 +88,10 @@ public class PlayerMovement : MonoBehaviour
            
         }
 
+        if (isVaulting == false) 
+        {
+            vaulting.vaultWall.GetComponent<Collider>().enabled = true;
+        }
        
 
         #endregion
@@ -129,16 +134,20 @@ public class PlayerMovement : MonoBehaviour
     #endregion
     public IEnumerator StartVaulting() 
     {
-        isVaulting = true;
+        
+        
 
+        vaulting.vaultWall.GetComponent<Collider>().enabled = false;
+
+        isVaulting = true;
         Debug.Log("E Pressed");
 
        
-       
+
         yield return new WaitWhile(() => vaulting.doneVault == false);
 
         isVaulting = false;
-
+        vaulting.vaultWall.GetComponent<Collider>().enabled = true;
     }
 
 
