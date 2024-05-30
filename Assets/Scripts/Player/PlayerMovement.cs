@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]private float speed = 12f;
-    [SerializeField] private float gravity = -9.81f;
+    [SerializeField]private float gravity = -9.81f;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -115,17 +115,17 @@ public class PlayerMovement : MonoBehaviour
     {
         movement = value.Get<Vector3>();
 
-        if (movement.x != 0 || movement.z != 0)
+        if (moveDirection == Vector3.zero)
         {
-            //animator.SetFloat("X", movement.x);
+            animator.SetFloat("Speed", 0f);
             //animator.SetFloat("Y", movement.y);
 
-            animator.SetBool("IsWalking", true);
+            //animator.SetBool("IsWalking", true);
 
         }
-        else
+        else 
         {
-            animator.SetBool("IsWalking", false);
+            animator.SetFloat("Speed", 0.5f);
 
         }
 
