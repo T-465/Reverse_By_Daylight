@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -835,7 +835,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.048, y: 1.711, z: 0.344}
+  m_LocalPosition: {x: -0.04799986, y: 1.711, z: 0.34399986}
   m_LocalScale: {x: 0.0090000015, y: 0.009, z: 0.0090000015}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -899,6 +899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 100
   playerBody: {fileID: 1755733461}
+  target: {fileID: 0}
 --- !u!1 &1196008929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,10 +1209,10 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 71041beb23173c24e8c2dd0271a50de0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 963194228}
+      addedObject: {fileID: 1415178177}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 71041beb23173c24e8c2dd0271a50de0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1415178177}
+      addedObject: {fileID: 963194228}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 71041beb23173c24e8c2dd0271a50de0, type: 3}
       insertIndex: -1

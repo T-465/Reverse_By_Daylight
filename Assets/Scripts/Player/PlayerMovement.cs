@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]private float speed = 12f;
-    [SerializeField]private float gravity = -9.81f;
+    [SerializeField] private float speed = 12f;
+    [SerializeField] private float gravity = -9.81f;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -20,9 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController cc;
     private Animator animator;
     public PlayerInput playerinput;
-    
-    private Vector3 currentPosition;
 
+    private Vector3 currentPosition;
 
     public Transform target;
     Vector3 moveDirection;
@@ -31,23 +29,20 @@ public class PlayerMovement : MonoBehaviour
     public bool isVaulting;
 
     public Vaulting vaulting;
-    
-    
+
     private void Awake()
     {
-        
         cc = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-        
     }
+
     private void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (isGrounded && velocity.y < 0) 
-        { 
-          velocity.y = 0f;
-        
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = 0f;
         }
 
         float x = Input.GetAxis("Horizontal");
@@ -61,41 +56,42 @@ public class PlayerMovement : MonoBehaviour
 
         cc.Move(velocity * Time.deltaTime);
 
-        
-
+        if (move.magnitude > 0)
+        {
+            animator.SetFloat("Speed", move.magnitude);
+        }
+        else
+        {
+            animator.SetFloat("Speed", 0f);
+        }
 
         #region Vaulting
         currentPosition = transform.position;
 
-
-        if (otherSide != null) 
-        { 
-          target = otherSide.transform;
-        
+        if (otherSide != null)
+        {
+            target = otherSide.transform;
         }
-        else 
+        else
         {
             Debug.Log("Target Not Found");
             target = null;
         }
-     
-     
 
         if (isVaulting == true)
         {
             Vector3 direction = (target.position - transform.position).normalized;
             moveDirection = direction;
-           
         }
 
-        if (isVaulting == false) 
+        if (isVaulting == false)
         {
             vaulting.vaultWall.GetComponent<Collider>().enabled = true;
         }
-       
 
         #endregion
     }
+
     private void FixedUpdate()
     {
         //set to chase the player
@@ -104,60 +100,43 @@ public class PlayerMovement : MonoBehaviour
             Vector3 direction = (target.position - transform.position).normalized;
             moveDirection = direction;
 
-            
             cc.Move(moveDirection * speed);
-
         }
     }
 
-    #region  Movement Animations
+    #region Movement Animations
     private void OnMovement(InputValue value)
     {
         movement = value.Get<Vector3>();
 
-        if (moveDirection == Vector3.zero)
+        if (movement == Vector3.zero)
         {
             animator.SetFloat("Speed", 0f);
-            //animator.SetFloat("Y", movement.y);
-
-            //animator.SetBool("IsWalking", true);
-
         }
-        else 
+        else
         {
-            animator.SetFloat("Speed", 0.5f);
-
+            animator.SetFloat("Speed", movement.magnitude);
         }
-
-
     }
     #endregion
-    public IEnumerator StartVaulting() 
-    {
-        
-        
 
+    public IEnumerator StartVaulting()
+    {
         vaulting.vaultWall.GetComponent<Collider>().enabled = false;
 
         isVaulting = true;
         Debug.Log("E Pressed");
-
-       
 
         yield return new WaitWhile(() => vaulting.doneVault == false);
 
         isVaulting = false;
         vaulting.vaultWall.GetComponent<Collider>().enabled = true;
     }
-
-
-   
-
 }
-        
 
-        
-   
 
-   
+
+
+
+
 
