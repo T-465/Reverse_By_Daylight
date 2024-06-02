@@ -90,6 +90,18 @@ public class PlayerMovement : MonoBehaviour
         }
 
         #endregion
+
+        #region Attack
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetBool("IsAttacking", true);
+        }
+        else
+        {
+            animator.SetBool("IsAttacking", false);
+        }
+
+        #endregion
     }
 
     private void FixedUpdate()
