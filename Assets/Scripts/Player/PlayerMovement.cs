@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 12f;
+    [SerializeField] private float speed;
     [SerializeField] private float gravity = -9.81f;
 
     public Transform groundCheck;
@@ -171,9 +171,12 @@ public class PlayerMovement : MonoBehaviour
        cc.Move(moveDirection * speed * Time.deltaTime * 1.5f);
         
         yield return new WaitForSeconds(2);
-        playerinput.enabled = true;
+        speed = 0f;
+        movement = Vector3.zero;
         lunging = false;
-       
+        yield return new WaitForSeconds(1.5f);
+        playerinput.enabled = true;
+        speed = 3f;
     }
 }
 
