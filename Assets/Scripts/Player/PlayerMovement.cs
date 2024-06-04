@@ -20,16 +20,23 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     public PlayerInput playerinput;
 
+    #region Vaulting Variables
     private Vector3 currentPosition;
 
+    
     public Transform target;
     Vector3 moveDirection;
-
+     
     public GameObject otherSide;
     public bool isVaulting;
 
     public Vaulting vaulting;
+    #endregion
 
+    #region Lunging Variables
+    public bool lunging;
+    public Transform lungeTarget;
+    #endregion
     private void Awake()
     {
         cc = GetComponent<CharacterController>();
@@ -94,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         #region Attack
         if (Input.GetMouseButtonDown(0))
         {
-           
+            lunging = true;
             animator.SetBool("IsAttacking", true);
         }
         else
@@ -102,8 +109,14 @@ public class PlayerMovement : MonoBehaviour
             
             animator.SetBool("IsAttacking", false);
         }
-
+        if (lunging == true)
+        {
+            StartCoroutine(Lunge());
+        }
         #endregion
+
+
+
     }
 
     private void FixedUpdate()
@@ -145,6 +158,22 @@ public class PlayerMovement : MonoBehaviour
 
         isVaulting = false;
         vaulting.vaultWall.GetComponent<Collider>().enabled = true;
+    }
+
+    public IEnumerator Lunge()
+    {
+        
+        playerinput.enabled = false;
+        
+        Vector3 direction = (lungeTarget.position - transform.position).normalized;
+        moveDirection = direction;
+
+       cc.Move(moveDirection * speed * Time.deltaTime * 1.5f);
+        
+        yield return new WaitForSeconds(2);
+        playerinput.enabled = true;
+        lunging = false;
+       
     }
 }
 
