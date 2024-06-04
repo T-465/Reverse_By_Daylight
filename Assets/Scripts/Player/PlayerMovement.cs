@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -164,7 +166,13 @@ public class PlayerMovement : MonoBehaviour
     {
         
         playerinput.enabled = false;
-        
+
+        //Transform p;
+        //p = transform;
+        //p.position = new Vector3(p.position.x + 1 , p.position.y, p.position.z);
+        //Debug.Log(p.position.ToString());
+
+
         Vector3 direction = (lungeTarget.position - transform.position).normalized;
         moveDirection = direction;
 
