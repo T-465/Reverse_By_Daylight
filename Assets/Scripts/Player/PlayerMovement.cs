@@ -39,6 +39,10 @@ public class PlayerMovement : MonoBehaviour
     public bool lunging;
     public Transform lungeTarget;
     #endregion
+
+    #region Trap Variables
+    public bool Trapping;
+    #endregion
     private void Awake()
     {
         cc = GetComponent<CharacterController>();
@@ -117,7 +121,22 @@ public class PlayerMovement : MonoBehaviour
         }
         #endregion
 
-
+        #region PlaceTrap
+        if (Input.GetMouseButton(1))
+        {
+            Trapping = true;
+            animator.SetBool("IsPlacing", true);
+        }
+        else
+        {
+            Trapping = false;
+            animator.SetBool("IsPlacing", false);
+        }
+        if (Trapping == true)
+        {
+            StartCoroutine(PlacingTrap());
+        }
+        #endregion
 
     }
 
@@ -162,15 +181,11 @@ public class PlayerMovement : MonoBehaviour
         vaulting.vaultWall.GetComponent<Collider>().enabled = true;
     }
 
+    #region Lunge
     public IEnumerator Lunge()
     {
         
         playerinput.enabled = false;
-
-        //Transform p;
-        //p = transform;
-        //p.position = new Vector3(p.position.x + 1 , p.position.y, p.position.z);
-        //Debug.Log(p.position.ToString());
 
 
         Vector3 direction = (lungeTarget.position - transform.position).normalized;
@@ -182,7 +197,20 @@ public class PlayerMovement : MonoBehaviour
         speed = 0f;
         movement = Vector3.zero;
         lunging = false;
+        
         yield return new WaitForSeconds(1.5f);
+        playerinput.enabled = true;
+        
+        speed = 3f;
+    }
+    #endregion
+    public IEnumerator PlacingTrap() 
+    {
+        playerinput.enabled = false;
+        speed = 0f;
+        movement = Vector3.zero;
+
+        yield return new WaitForSeconds(2);
         playerinput.enabled = true;
         speed = 3f;
     }
