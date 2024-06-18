@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     #region Trap Variables
     public bool Trapping;
+  
     #endregion
     private void Awake()
     {
@@ -126,6 +127,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Trapping = true;
             animator.SetBool("IsPlacing", true);
+          
+
         }
         else
         {
@@ -206,13 +209,14 @@ public class PlayerMovement : MonoBehaviour
     #endregion
     public IEnumerator PlacingTrap() 
     {
-        playerinput.enabled = false;
+       
         speed = 0f;
         movement = Vector3.zero;
 
-        yield return new WaitForSeconds(2);
-        playerinput.enabled = true;
+        yield return new WaitForSeconds(4);
+        Trapping = false;
         speed = 3f;
+        
     }
 }
 
