@@ -126,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
         #endregion
 
         #region PlaceTrap
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && Trapping == false)
         {
             Trapping = true;
             StartCoroutine(PlacingTrap());
