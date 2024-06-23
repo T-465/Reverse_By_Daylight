@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    public GameObject Weapon;
 
     Vector3 velocity;
     bool isGrounded;
@@ -42,7 +43,9 @@ public class PlayerMovement : MonoBehaviour
 
     #region Trap Variables
     public bool Trapping;
-  
+    public GameObject trapPrefab;
+    public Transform playerrightHand;
+   public Transform trapTarget;
     #endregion
     private void Awake()
     {
@@ -123,22 +126,14 @@ public class PlayerMovement : MonoBehaviour
         #endregion
 
         #region PlaceTrap
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             Trapping = true;
-            animator.SetBool("IsPlacing", true);
-          
+            StartCoroutine(PlacingTrap());
 
         }
-        else
-        {
-            Trapping = false;
-            animator.SetBool("IsPlacing", false);
-        }
-        if (Trapping == true)
-        {
-            StartCoroutine(PlacingTrap());
-        }
+      
+     
         #endregion
 
     }
@@ -209,14 +204,19 @@ public class PlayerMovement : MonoBehaviour
     #endregion
     public IEnumerator PlacingTrap() 
     {
-       
-        speed = 0f;
-        movement = Vector3.zero;
+        animator.SetBool("IsPlacing", true);
+        Vector3 startPosition = playerrightHand.position;
+        Vector3 endPosition = trapTarget.position;
+
+        
+        Instantiate(trapPrefab, endPosition, Quaternion.identity);
+      
 
         yield return new WaitForSeconds(4);
+        Weapon.gameObject.SetActive(true);
         Trapping = false;
         speed = 3f;
-        
+        animator.SetBool("IsPlacing", false);
     }
 }
 
