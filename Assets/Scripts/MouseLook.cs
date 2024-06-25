@@ -19,11 +19,11 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
        
-        if (playerMovement.Trapping == true)
+        if (playerMovement.trapping == true)
         {
           
         }
-        else if (playerMovement.Trapping == false)
+        else if (playerMovement.trapping == false)
         {
             float mouseX = Input.GetAxis("MouseX") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("MouseY") * mouseSensitivity * Time.deltaTime;

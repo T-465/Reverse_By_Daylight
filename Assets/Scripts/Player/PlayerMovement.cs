@@ -42,10 +42,11 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Trap Variables
-    public bool Trapping;
+    public bool trapping;
     public GameObject trapPrefab;
     public Transform playerrightHand;
-   public Transform trapTarget;
+    public Transform trapTarget;
+    Vector3 endPosition;
     #endregion
     private void Awake()
     {
@@ -125,17 +126,23 @@ public class PlayerMovement : MonoBehaviour
         }
         #endregion
 
+
+        //Debug.Log(trapTarget.position);
+        //endPosition = trapTarget.position;
+
         #region PlaceTrap
-        if (Input.GetMouseButtonDown(1) && Trapping == false)
+        if (Input.GetMouseButtonDown(1) && trapping == false)
         {
-            Trapping = true;
+            trapTarget = GameObject.FindWithTag("TrapTarget").transform;
+            endPosition = trapTarget.transform.position;
+            trapping = true;
             StartCoroutine(PlacingTrap());
 
         }
-      
-     
-        #endregion
 
+
+        #endregion
+        
     }
 
     private void FixedUpdate()
@@ -148,6 +155,9 @@ public class PlayerMovement : MonoBehaviour
 
             cc.Move(moveDirection * speed);
         }
+
+
+       
     }
 
     #region Movement Animations
@@ -204,17 +214,17 @@ public class PlayerMovement : MonoBehaviour
     #endregion
     public IEnumerator PlacingTrap() 
     {
+        Weapon.gameObject.SetActive(false);
         animator.SetBool("IsPlacing", true);
-        Vector3 startPosition = playerrightHand.position;
-        Vector3 endPosition = trapTarget.position;
+       
+        GameObject trap = Instantiate(trapPrefab, endPosition, Quaternion.identity);
+        trap.transform.position = endPosition;
 
-        
-        Instantiate(trapPrefab, endPosition, Quaternion.identity);
-      
+
 
         yield return new WaitForSeconds(4);
         Weapon.gameObject.SetActive(true);
-        Trapping = false;
+        trapping = false;
         speed = 3f;
         animator.SetBool("IsPlacing", false);
     }
