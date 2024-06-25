@@ -220,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject trap = Instantiate(trapPrefab, endPosition, Quaternion.identity);
         trap.transform.position = endPosition;
 
-
+        trap.GetComponentInChildren<Animator>().SetBool("Open", true);
 
         yield return new WaitForSeconds(4);
         Weapon.gameObject.SetActive(true);
