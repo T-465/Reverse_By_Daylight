@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &29511371
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4200594153968078988, guid: 82697d40fdcd9c649a7c2c3b485200bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200594153968078988, guid: 82697d40fdcd9c649a7c2c3b485200bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200594153968078988, guid: 82697d40fdcd9c649a7c2c3b485200bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200594153968078988, guid: 82697d40fdcd9c649a7c2c3b485200bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200594153968078988, guid: 82697d40fdcd9c649a7c2c3b485200bb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200594153968078988, guid: 82697d40fdcd9c649a7c2c3b485200bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200594153968078988, guid: 82697d40fdcd9c649a7c2c3b485200bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200594153968078988, guid: 82697d40fdcd9c649a7c2c3b485200bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200594153968078988, guid: 82697d40fdcd9c649a7c2c3b485200bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200594153968078988, guid: 82697d40fdcd9c649a7c2c3b485200bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113687733755079140, guid: 82697d40fdcd9c649a7c2c3b485200bb, type: 3}
+      propertyPath: m_Name
+      value: Dead_By_Daylight_-_Locker
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 82697d40fdcd9c649a7c2c3b485200bb, type: 3}
 --- !u!1 &41836886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,7 +1321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3874464244799575623, guid: 2918ace76f541714f863b6ee4e110126, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6429681504592563023, guid: 2918ace76f541714f863b6ee4e110126, type: 3}
       propertyPath: vaulting
@@ -1332,3 +1389,4 @@ SceneRoots:
   - {fileID: 412602360}
   - {fileID: 1322687528}
   - {fileID: 6322344011037989605}
+  - {fileID: 29511371}

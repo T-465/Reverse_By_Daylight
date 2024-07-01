@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dead By Daylight - Locker
+* source:	https://sketchfab.com/3d-models/dead-by-daylight-locker-1b0ca19abb5745f0bab6804c884e2841
+* author:	Matt2 (https://sketchfab.com/MattJolly2)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dead By Daylight - Locker" (https://sketchfab.com/3d-models/dead-by-daylight-locker-1b0ca19abb5745f0bab6804c884e2841) by Matt2 (https://sketchfab.com/MattJolly2) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
