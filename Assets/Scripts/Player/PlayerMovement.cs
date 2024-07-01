@@ -133,13 +133,17 @@ public class PlayerMovement : MonoBehaviour
         #region PlaceTrap
         if (Input.GetMouseButtonDown(1) && trapping == false)
         {
+            speed = 0f;
             trapTarget = GameObject.FindWithTag("TrapTarget").transform;
             endPosition = trapTarget.transform.position;
             trapping = true;
             StartCoroutine(PlacingTrap());
 
         }
-
+        else
+        {
+            speed = 3f;
+        }
 
         #endregion
         
@@ -225,7 +229,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(4);
         Weapon.gameObject.SetActive(true);
         trapping = false;
-        speed = 3f;
+        
         animator.SetBool("IsPlacing", false);
     }
 }
