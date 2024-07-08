@@ -127,6 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7287491590731067173}
   - component: {fileID: 3881804004098562923}
+  - component: {fileID: 4189061578143162777}
   m_Layer: 0
   m_Name: Sketchfab_model
   m_TagString: Untagged
@@ -171,6 +172,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.508044, y: 3.6289816, z: 6.371468}
   m_Center: {x: -40.731075, y: 116.69759, z: -3.292006}
+--- !u!114 &4189061578143162777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2638104438801077820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1bcecf4727eda44a290de6d312be12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5724429610176447282
 GameObject:
   m_ObjectHideFlags: 0
