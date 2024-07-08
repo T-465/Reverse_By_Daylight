@@ -126,6 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7287491590731067173}
+  - component: {fileID: 3881804004098562923}
   m_Layer: 0
   m_Name: Sketchfab_model
   m_TagString: Untagged
@@ -149,6 +150,27 @@ Transform:
   - {fileID: 8537381812815938731}
   m_Father: {fileID: 4200594153968078988}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3881804004098562923
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2638104438801077820}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.508044, y: 3.6289816, z: 6.371468}
+  m_Center: {x: -40.731075, y: 116.69759, z: -3.292006}
 --- !u!1 &5724429610176447282
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4200594153968078988}
+  - component: {fileID: 674330646786602635}
   m_Layer: 0
   m_Name: Dead_By_Daylight_-_Locker
   m_TagString: Untagged
@@ -379,6 +402,27 @@ Transform:
   - {fileID: 7287491590731067173}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &674330646786602635
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113687733755079140}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.587823, y: 6.356339, z: 3.8830872}
+  m_Center: {x: -39.01801, y: 3.194379, z: 116.62448}
 --- !u!1 &8538943075984649446
 GameObject:
   m_ObjectHideFlags: 0
