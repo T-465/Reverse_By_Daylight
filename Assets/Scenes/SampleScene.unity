@@ -682,6 +682,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4189061578143162777, guid: 82697d40fdcd9c649a7c2c3b485200bb, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 1755733464}
     - target: {fileID: 4200594153968078988, guid: 82697d40fdcd9c649a7c2c3b485200bb, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.47431523

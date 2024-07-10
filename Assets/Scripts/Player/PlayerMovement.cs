@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] public float speed;
     [SerializeField] private float gravity = -9.81f;
 
     public Transform groundCheck;
@@ -22,6 +22,10 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController cc;
     private Animator animator;
     public PlayerInput playerinput;
+    #region Locker Variables
+    public LockerOpen lockerOpen;
+    public bool inarea;
+    #endregion
 
     #region Vaulting Variables
     private Vector3 currentPosition;
@@ -126,10 +130,6 @@ public class PlayerMovement : MonoBehaviour
         }
         #endregion
 
-
-        //Debug.Log(trapTarget.position);
-        //endPosition = trapTarget.position;
-
         #region PlaceTrap
         if (Input.GetMouseButtonDown(1) && trapping == false)
         {
@@ -146,7 +146,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         #endregion
-        
+
+        #region OpenLocker
+        if (Input.GetKey(KeyCode.E) && inarea == true)
+        {
+            Debug.Log("E pressed");
+            StartCoroutine(lockerOpen.OpeningLocker());
+        }
+
+        #endregion
     }
 
     private void FixedUpdate()
@@ -232,6 +240,26 @@ public class PlayerMovement : MonoBehaviour
         
         animator.SetBool("IsPlacing", false);
     }
+
+    #region Lockers
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Locker")
+        {
+            inarea = true;
+            lockerOpen = other.gameObject.GetComponent<LockerOpen>();
+
+        }
+        else
+        {
+            inarea = false;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        inarea = false;
+    }
+    #endregion
 }
 
 

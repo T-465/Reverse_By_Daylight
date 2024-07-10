@@ -6,6 +6,7 @@ TagManager:
   tags:
   - OtherSide
   - TrapTarget
+  - Locker
   layers:
   - Default
   - TransparentFX
