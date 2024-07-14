@@ -14,12 +14,13 @@ public class LockerOpen : MonoBehaviour
     }
     public IEnumerator OpeningLocker()
     {
-       playerMovement.speed = 0f;
-       
-       animator.SetBool("Open", true);
+        animator.SetBool("Open", true);
+        StartCoroutine(playerMovement.Locker());
+
+        
 
        yield return new WaitForSeconds(2);
        animator.SetBool("Open", false);
-       playerMovement.speed = 3f;
+       
     }
 }

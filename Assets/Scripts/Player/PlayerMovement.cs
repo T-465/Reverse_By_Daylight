@@ -148,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
         #endregion
 
         #region OpenLocker
-        if (Input.GetKey(KeyCode.E) && inarea == true)
+        if (Input.GetKeyDown(KeyCode.E) && inarea == true)
         {
             Debug.Log("E pressed");
             StartCoroutine(lockerOpen.OpeningLocker());
@@ -259,7 +259,17 @@ public class PlayerMovement : MonoBehaviour
     {
         inarea = false;
     }
+    public IEnumerator Locker()
+    {
+        speed = 0f;
+
+        yield return new WaitForSeconds(2);
+        speed = 3f;
+    }
     #endregion
+
+
+
 }
 
 
