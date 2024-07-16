@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log("Target Not Found");
+            //Debug.Log("Target Not Found");
             target = null;
         }
 
@@ -262,10 +262,14 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator Locker()
     {
         speed = 0f;
-
+        animator.SetBool("OpeningLocker", true);
         yield return new WaitForSeconds(2);
+        animator.SetBool("OpeningLocker", false);
         speed = 3f;
     }
+
+
+
     #endregion
 
 

@@ -15,6 +15,7 @@ public class LockerOpen : MonoBehaviour
     public IEnumerator OpeningLocker()
     {
         animator.SetBool("Open", true);
+        Debug.Log("Pls Work");
         StartCoroutine(playerMovement.Locker());
 
         
