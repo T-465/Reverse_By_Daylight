@@ -6,9 +6,9 @@ using UnityEngine;
 public class LockerOpen : MonoBehaviour
 {
     public PlayerMovement playerMovement;
-    private Animator animator;
+    public Animator animator;
 
-    private void Awake()
+    private void Start()
     {
         animator = GetComponent<Animator>();    
     }
@@ -20,7 +20,7 @@ public class LockerOpen : MonoBehaviour
 
         
 
-       yield return new WaitForSeconds(2);
+       yield return new WaitForSeconds(3);
        animator.SetBool("Open", false);
        
     }

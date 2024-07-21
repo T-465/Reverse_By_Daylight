@@ -13,11 +13,6 @@ public class Vaulting : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (doneVault == true)
-        {
-            doneVault = false;
-
-        }
         
         otherSide.gameObject.SetActive(true);
         playerMovement.otherSide = GameObject.FindWithTag("OtherSide");

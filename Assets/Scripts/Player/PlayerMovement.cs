@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController cc;
     private Animator animator;
     public PlayerInput playerinput;
+
     #region Locker Variables
     public LockerOpen lockerOpen;
     public bool inarea;
@@ -29,14 +30,10 @@ public class PlayerMovement : MonoBehaviour
 
     #region Vaulting Variables
     private Vector3 currentPosition;
-
-    
     public Transform target;
     Vector3 moveDirection;
-     
     public GameObject otherSide;
     public bool isVaulting;
-
     public Vaulting vaulting;
     #endregion
 
@@ -52,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform trapTarget;
     Vector3 endPosition;
     #endregion
+
     private void Awake()
     {
         cc = GetComponent<CharacterController>();
@@ -96,21 +94,23 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Target Not Found");
             target = null;
         }
 
-        if (isVaulting == true)
+        if (Input.GetKeyDown(KeyCode.E) && target != null)
+        {
+            StartCoroutine(StartVaulting());
+        }
+
+        if (isVaulting)
         {
             Vector3 direction = (target.position - transform.position).normalized;
             moveDirection = direction;
         }
-
-        if (isVaulting == false)
+        else
         {
             vaulting.vaultWall.GetComponent<Collider>().enabled = true;
         }
-
         #endregion
 
         #region Attack
@@ -121,7 +121,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            
             animator.SetBool("IsAttacking", false);
         }
         if (lunging == true)
@@ -159,17 +158,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //set to chase the player
         if (isVaulting)
         {
             Vector3 direction = (target.position - transform.position).normalized;
             moveDirection = direction;
 
-            cc.Move(moveDirection * speed);
+            cc.Move(moveDirection * speed * Time.deltaTime);
         }
-
-
-       
     }
 
     #region Movement Animations
@@ -191,44 +186,75 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator StartVaulting()
     {
         vaulting.vaultWall.GetComponent<Collider>().enabled = false;
-
         isVaulting = true;
-        Debug.Log("E Pressed");
 
-        yield return new WaitWhile(() => vaulting.doneVault == false);
+        while (Vector3.Distance(transform.position, target.position) > 0.1f)
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+            moveDirection = direction;
+            cc.Move(moveDirection * speed * Time.deltaTime);
+            yield return null;
+        }
 
         isVaulting = false;
         vaulting.vaultWall.GetComponent<Collider>().enabled = true;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Vault"))
+        {
+            otherSide = GameObject.FindWithTag("OtherSide");
+            target = otherSide.transform;
+        }
+        if (other.tag == "Locker")
+        {
+            inarea = true;
+            lockerOpen = other.gameObject.GetComponent<LockerOpen>();
+        }
+        else
+        {
+            inarea = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Vault"))
+        {
+            otherSide = null;
+            target = null;
+        }
+        inarea = false;
+    }
+
     #region Lunge
     public IEnumerator Lunge()
     {
-        
         playerinput.enabled = false;
-
 
         Vector3 direction = (lungeTarget.position - transform.position).normalized;
         moveDirection = direction;
 
-       cc.Move(moveDirection * speed * Time.deltaTime * 1.5f);
-        
+        cc.Move(moveDirection * speed * Time.deltaTime);
+
         yield return new WaitForSeconds(2);
         speed = 0f;
         movement = Vector3.zero;
         lunging = false;
-        
+
         yield return new WaitForSeconds(1.5f);
         playerinput.enabled = true;
-        
+
         speed = 3f;
     }
     #endregion
-    public IEnumerator PlacingTrap() 
+
+    public IEnumerator PlacingTrap()
     {
         Weapon.gameObject.SetActive(false);
         animator.SetBool("IsPlacing", true);
-       
+
         GameObject trap = Instantiate(trapPrefab, endPosition, Quaternion.identity);
         trap.transform.position = endPosition;
 
@@ -237,28 +263,15 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(4);
         Weapon.gameObject.SetActive(true);
         trapping = false;
-        
+
         animator.SetBool("IsPlacing", false);
     }
 
     #region Lockers
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Locker")
-        {
-            inarea = true;
-            lockerOpen = other.gameObject.GetComponent<LockerOpen>();
+   
 
-        }
-        else
-        {
-            inarea = false;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        inarea = false;
-    }
+    
+
     public IEnumerator Locker()
     {
         speed = 0f;
@@ -267,13 +280,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("OpeningLocker", false);
         speed = 3f;
     }
-
-
-
     #endregion
-
-
-
 }
 
 
