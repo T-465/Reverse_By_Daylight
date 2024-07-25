@@ -17,7 +17,7 @@ public class Vaulting : MonoBehaviour
         otherSide.gameObject.SetActive(true);
         playerMovement.otherSide = GameObject.FindWithTag("OtherSide");
 
-        
+        doneVault = false;
         
     }
     private void OnTriggerExit(Collider other) 
@@ -25,8 +25,8 @@ public class Vaulting : MonoBehaviour
        
         doneVault = true;
         playerMovement.isVaulting = false;
-        otherSide.gameObject.SetActive(false);
-        playerMovement.otherSide = null;
+        //otherSide.gameObject.SetActive(false);
+        //playerMovement.otherSide = null;
 
        
 
@@ -39,7 +39,7 @@ public class Vaulting : MonoBehaviour
         {
             StartCoroutine(playerMovement.StartVaulting());
 
-            otherSide.gameObject.SetActive(false);
+            //otherSide.gameObject.SetActive(false);
         }
 
        

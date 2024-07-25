@@ -188,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
         vaulting.vaultWall.GetComponent<Collider>().enabled = false;
         isVaulting = true;
 
-        while (Vector3.Distance(transform.position, target.position) > 0.1f)
+        while (Vector3.Distance(transform.position, target.position) > 0.001f)
         {
             Vector3 direction = (target.position - transform.position).normalized;
             moveDirection = direction;
@@ -197,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         isVaulting = false;
-        vaulting.vaultWall.GetComponent<Collider>().enabled = true;
+        //vaulting.vaultWall.GetComponent<Collider>().enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
