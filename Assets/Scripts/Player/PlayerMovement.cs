@@ -202,6 +202,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        vaulting = other.gameObject.GetComponent<Vaulting>();
         if (other.CompareTag("Vault"))
         {
             otherSide = GameObject.FindWithTag("OtherSide");
@@ -222,6 +223,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Vault"))
         {
+            
             otherSide = null;
             target = null;
         }
