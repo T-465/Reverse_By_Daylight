@@ -160,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isVaulting)
         {
+            
             Vector3 direction = (target.position - transform.position).normalized;
             moveDirection = direction;
 
@@ -185,6 +186,7 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator StartVaulting()
     {
+        animator.SetBool("Vaulting", true);
         vaulting.vaultWall.GetComponent<Collider>().enabled = false;
         isVaulting = true;
 
@@ -197,6 +199,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         isVaulting = false;
+        animator.SetBool("Vaulting", false);
         //vaulting.vaultWall.GetComponent<Collider>().enabled = true;
     }
 
